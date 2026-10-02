@@ -18,8 +18,8 @@
 #include "applib/ui/animation.h"
 #include "applib/ui/animation_interpolate.h"
 #include "applib/ui/animation_timing.h"
-#include "pbl/util/math_fixed.h"
-#include "pbl/util/trig.h"
+#include "util/math_fixed.h"
+#include "util/trig.h"
 
 #include <time.h>
 

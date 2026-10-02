@@ -19,7 +19,6 @@
 #include "services/common/i18n/i18n.h"
 #include "services/normal/timeline/timeline.h"
 #include "services/normal/weather/weather_service.h"
-#include "services/normal/weather/weather_types.h"
 #include "util/array.h"
 #include "util/attributes.h"
 #include "util/list.h"

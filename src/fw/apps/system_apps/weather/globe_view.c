@@ -18,6 +18,7 @@
 #include "applib/ui/vibes.h"
 #include "applib/applib_malloc.auto.h"
 #include "applib/vendor/tinflate/tinflate.h"
+#include "util/size.h"
 
 #include <limits.h>
 #include <string.h>
@@ -2482,12 +2483,10 @@ static void start_lock_pulse(GlobeView *view) {
     // the round hardware — a pulse this short at low amplitude can sit under the vibe
     // motor's start-up threshold, so it must be long/strong enough to actually spin up.
     // Still a tick, nowhere near a notification buzz (those are 100s of ms at 100%).
-    static const uint32_t nudge_ms[]  = { PBL_IF_ROUND_ELSE(45, 25) };
-    static const uint32_t nudge_amp[] = { PBL_IF_ROUND_ELSE(70, 25) };
-    vibes_enqueue_custom_pattern_with_amplitudes((VibePatternWithAmplitudes){
-        .durations = nudge_ms,
-        .amplitudes = nudge_amp,
-        .num_segments = 1,
+    static const uint32_t nudge_ms[] = { PBL_IF_ROUND_ELSE(45, 25) };
+    vibes_enqueue_custom_pattern((VibePattern){
+        .durations    = nudge_ms,
+        .num_segments = ARRAY_LENGTH(nudge_ms),
     });
 }
 
